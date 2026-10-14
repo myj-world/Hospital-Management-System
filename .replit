@@ -1,5 +1,29 @@
+modules = ["c-clang20"]
 [nix]
 channel = "stable-25_05"
 
 [agent]
 expertMode = true
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Run C program"
+
+[[workflows.workflow]]
+name = "Run C program"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mkdir -p build && clang -std=c11 -Wall -Wextra -Wpedantic main.c -o build/hospital && ./build/hospital"
+
+[workflows.workflow.metadata]
+outputType = "console"
