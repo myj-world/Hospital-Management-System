@@ -23,7 +23,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "mkdir -p build && clang -std=c11 -Wall -Wextra -Wpedantic main.c -o build/hospital && ./build/hospital"
+args = "mkdir -p build && clang -std=c11 -Wall -Wextra -Wpedantic \"Source Code/main.c\" -o build/hospital && ./build/hospital"
 
 [workflows.workflow.metadata]
 outputType = "console"
